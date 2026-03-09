@@ -211,4 +211,24 @@
 
 ---
 
+### Decision 21 — Unit Tests (18 Tests, 3 Classes)
+
+**What:** Created `TemplateServiceTest` (7 tests, `@SpringBootTest` with real Thymeleaf), `EmailSenderServiceTest` (5 tests, Mockito), and `EmailControllerTest` (6 tests, MockMvc). All 18 pass.
+
+**Why:** The original plan included a Phase 9 for tests. Tests cover: template rendering for all 11 types, required field validation, subject generation, dev/prod mode switching, rate limiting enforcement, batch processing, and all 4 REST endpoints with validation errors.
+
+**Was it correct? Yes.** Two bugs were found and fixed during testing: (1) `BatchEmailResponse` getters were named `getTotal()` not `getTotalCount()`, (2) `LOGIN_ALERT` requires field `time` not `loginTime`. Tests also needed `@TestPropertySource(properties = "email.dev-mode=true")` to bypass the API key auth filter.
+
+---
+
+### Decision 22 — README.md for GitHub Repo
+
+**What:** Created a comprehensive `README.md` with quick start, API reference, email types table, architecture diagram, test instructions, and CI/CD info.
+
+**Why:** The GitHub repo looked bare without a README. A good README is essential for any open-source project and helps future contributors (or the user's other AI sessions) understand the project quickly.
+
+**Was it correct? Yes.** Covers all essential sections without being bloated.
+
+---
+
 *This document will be appended after each major decision during implementation.*
