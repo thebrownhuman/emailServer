@@ -231,4 +231,14 @@
 
 ---
 
+### Decision 23 — Production Deployment on NUC Homelab via Cloudflare Tunnel
+
+**What:** Deployed the email service to the Ubuntu homelab (`nuc-homelab`) using Docker. Image pulled from `ghcr.io/thebrownhuman/emailserver:latest`. Exposed via Cloudflare Tunnel at `https://email.shivanshmishra.in`. Secrets stored in `~/email-service/.env` (never in the image).
+
+**Why:** The user's NUC homelab already runs a Cloudflare Tunnel for `progress.shivanshmishra.in`. Adding the email service was a simple config addition — no port forwarding, no SSL setup, no firewall changes. Cloudflare handles TLS, DDoS protection, and routing automatically.
+
+**Was it correct? Yes.** Health check confirms: `{"status":"UP","smtp":"connected","uptime":"3m","version":"1.0.0"}`. The service is accessible from anywhere via `https://email.shivanshmishra.in`.
+
+---
+
 *This document will be appended after each major decision during implementation.*
