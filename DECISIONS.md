@@ -171,4 +171,44 @@
 
 ---
 
+### Decision 17 — .gitignore and .dockerignore (What Gets Tracked vs Built)
+
+**What:** Created `.gitignore` (excludes `target/`, `.env`, IDE files, Maven wrapper JAR, logs) and `.dockerignore` (excludes `.git`, IDE, docs, secrets, build output from Docker build context).
+
+**Why:** `.gitignore` ensures no build artifacts, credentials, or IDE-specific files end up in the repo. `.dockerignore` keeps the Docker build context small and fast — no point copying `target/` into Docker since it rebuilds inside the container.
+
+**Was it correct? Yes.** The Maven wrapper `.properties` file IS tracked (tells Docker which Maven version to download), but the `.jar` is NOT (it's downloaded at build time). Secrets (`.env`) are excluded from both git and Docker.
+
+---
+
+### Decision 18 — GitHub Repo: `thebrownhuman/emailServer`
+
+**What:** Pushed the email service code to `git@github.com:thebrownhuman/emailServer.git` on branch `main`. Git user configured as `thebrownhuman` / `Thebrownhuman@gmail.com`.
+
+**Why:** The user wants the code version-controlled as a standalone project on GitHub. This also enables cloning on the remote deployment machine as an alternative to Docker Hub.
+
+**Was it correct? Yes.** The repo contains only source code, configs, templates, Docker files, and docs — no credentials, no build output, no IDE files.
+
+---
+
+### Decision 19 — GitHub Container Registry (ghcr.io) Over Docker Hub
+
+**What:** Used GitHub Container Registry (`ghcr.io/thebrownhuman/emailserver`) instead of Docker Hub for hosting Docker images.
+
+**Why:** The user already has a GitHub account (`thebrownhuman`). ghcr.io is free, integrated with GitHub, and requires no separate account. Auth uses the built-in `GITHUB_TOKEN` — zero setup. Docker Hub would require creating a separate account and managing separate credentials.
+
+**Was it correct? Yes.** ghcr.io is the path of least resistance for GitHub-hosted projects. Images are linked to the repo automatically.
+
+---
+
+### Decision 20 — GitHub Actions CI/CD (Auto Build + Push on Every Push to Main)
+
+**What:** Created `.github/workflows/docker-publish.yml` — a GitHub Actions workflow that triggers on every push to `main`, builds the Docker image, and pushes it to `ghcr.io/thebrownhuman/emailserver:latest`.
+
+**Why:** The user wants "whenever new code is pushed, Docker should get updated." GitHub Actions is free for public repos and has generous limits for private repos. No external CI service needed.
+
+**Was it correct? Yes.** The workflow uses official GitHub Actions (`checkout@v4`, `docker/login-action@v3`, `docker/build-push-action@v5`), tags images with both `latest` and the git SHA for traceability, and requires no secrets configuration since `GITHUB_TOKEN` is auto-provided.
+
+---
+
 *This document will be appended after each major decision during implementation.*
