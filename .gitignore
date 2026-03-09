@@ -31,3 +31,5 @@ logs/
 # === Misc ===
 *.bak
 *.tmp
+build-output.txt
+test-output.txt
