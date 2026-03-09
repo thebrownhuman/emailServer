@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body style="margin:0;padding:0;background-color:#0d1117;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#0d1117;">
+        <tr>
+            <td align="center" style="padding:40px 20px;">
+                <table width="600" cellpadding="0" cellspacing="0"
+                    style="background-color:#161b26;border-radius:16px;border:1px solid rgba(255,255,255,0.1);max-width:600px;width:100%;">
+                    <tr>
+                        <td style="padding:32px 40px 16px;text-align:center;">
+                            <h1 style="color:#2e77ff;font-size:24px;font-weight:700;margin:0;" th:text="${appName}">
+                                AppName</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px 40px 32px;">
+                            <h2 style="color:#22c55e;font-size:20px;font-weight:600;margin:0 0 16px;">✅ Identity Link
+                                Approved</h2>
+                            <p style="color:rgba(255,255,255,0.75);font-size:16px;line-height:1.6;margin:0 0 16px;">
+                                Hi <span style="color:#fff;font-weight:600;" th:text="${userName}">User</span>,
+                            </p>
+                            <p style="color:rgba(255,255,255,0.75);font-size:16px;line-height:1.6;margin:0 0 24px;">
+                                You have successfully linked your identity with
+                                <span style="color:#2e77ff;font-weight:600;" th:text="${serviceName}">NovaPay
+                                    Bank</span>.
+                                They can now verify your identity through your account.
+                            </p>
+                            <p style="color:rgba(255,255,255,0.45);font-size:14px;line-height:1.6;margin:0;">
+                                You can manage or revoke linked services from your dashboard at any time.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:24px 40px;text-align:center;border-top:1px solid rgba(255,255,255,0.06);">
+                            <p style="color:rgba(255,255,255,0.35);font-size:12px;margin:0;"
+                                th:text="'© ' + ${year} + ' ' + ${appName} + '. All rights reserved.'">© 2026 AppName
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

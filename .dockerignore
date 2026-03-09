@@ -1,0 +1,30 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Build output (rebuilt inside Docker)
+target/
+
+# Docker files (not needed inside container)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Docs
+README.md
+DECISIONS.md
+MEMORY.md
+*.md
+
+# Secrets
+.env
+*.env
+
+# OS
+.DS_Store
+Thumbs.db

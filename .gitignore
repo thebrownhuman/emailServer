@@ -1,0 +1,33 @@
+# === Build Output ===
+target/
+
+# === IDE ===
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+*.swp
+*.swo
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Credentials & Secrets ===
+.env
+*.env
+application-local.yml
+
+# === Maven Wrapper JAR (downloaded at build time) ===
+.mvn/wrapper/maven-wrapper.jar
+
+# === Logs ===
+*.log
+logs/
+
+# === Misc ===
+*.bak
+*.tmp

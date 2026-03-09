@@ -1,0 +1,12 @@
+email:
+  dev-mode: true
+  rate-limit:
+    enabled: false
+
+springdoc:
+  swagger-ui:
+    enabled: true
+
+logging:
+  level:
+    com.shivansh.emailservice: DEBUG

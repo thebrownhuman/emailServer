@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verification Code</title>
+</head>
+<body style="margin:0; padding:0; background-color:#0d1117; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#0d1117;">
+    <tr>
+        <td align="center" style="padding:40px 20px;">
+            <table width="600" cellpadding="0" cellspacing="0"
+                   style="background-color:#161b26; border-radius:16px; border:1px solid rgba(255,255,255,0.1); max-width:600px; width:100%;">
+
+                <!-- Header -->
+                <tr>
+                    <td style="padding:32px 40px 16px; text-align:center;">
+                        <h1 style="color:#2e77ff; font-size:24px; font-weight:700; margin:0;"
+                            th:text="${appName}">AppName</h1>
+                    </td>
+                </tr>
+
+                <!-- Content -->
+                <tr>
+                    <td style="padding:8px 40px 32px;">
+                        <p style="color:rgba(255,255,255,0.75); font-size:16px; line-height:1.6; margin:0 0 24px;">
+                            Hi <span style="color:#ffffff; font-weight:600;" th:text="${userName}">User</span>,
+                        </p>
+                        <p style="color:rgba(255,255,255,0.75); font-size:16px; line-height:1.6; margin:0 0 24px;">
+                            Your verification code is:
+                        </p>
+
+                        <!-- OTP Code Box -->
+                        <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td align="center" style="padding:16px 0;">
+                                    <div style="background-color:rgba(46,119,255,0.1); border:2px solid rgba(46,119,255,0.3);
+                                                border-radius:12px; display:inline-block; padding:20px 48px;">
+                                        <span style="color:#2e77ff; font-size:36px; font-weight:700; letter-spacing:0.3em; font-family:'Courier New',monospace;"
+                                              th:text="${otpCode}">482917</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="color:rgba(255,255,255,0.45); font-size:14px; line-height:1.6; margin:24px 0 0; text-align:center;">
+                            This code expires in <strong style="color:rgba(255,255,255,0.75);" th:text="${expiryMinutes}">3</strong> minutes.
+                            Do not share this code with anyone.
+                        </p>
+                    </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                    <td style="padding:24px 40px; text-align:center; border-top:1px solid rgba(255,255,255,0.06);">
+                        <p style="color:rgba(255,255,255,0.35); font-size:12px; margin:0;"
+                           th:text="'© ' + ${year} + ' ' + ${appName} + '. All rights reserved.'">
+                            © 2026 AppName. All rights reserved.
+                        </p>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

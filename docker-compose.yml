@@ -1,0 +1,20 @@
+services:
+  email-service:
+    build: .
+    container_name: email-service
+    ports:
+      - "8085:8085"
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      GMAIL_USERNAME: ${GMAIL_USERNAME}
+      GMAIL_APP_PASSWORD: ${GMAIL_APP_PASSWORD}
+      ATLASID_API_KEY: ${ATLASID_API_KEY}
+      INDIANEXPRESS_API_KEY: ${INDIANEXPRESS_API_KEY}
+      SHOPPING_API_KEY: ${SHOPPING_API_KEY}
+    networks:
+      - shivansh-network
+
+networks:
+  shivansh-network:
+    external: true

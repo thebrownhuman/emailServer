@@ -1,0 +1,46 @@
+server:
+  port: 8085
+
+app:
+  version: 1.0.0
+
+email:
+  dev-mode: false
+
+  smtp:
+    host: smtp.gmail.com
+    port: 587
+    username: ${GMAIL_USERNAME:shivanshmailserver@gmail.com}
+    password: ${GMAIL_APP_PASSWORD:changeme}
+
+  rate-limit:
+    enabled: true
+    global-limit: 500
+
+  callers:
+    atlasid:
+      api-key: ${ATLASID_API_KEY:ems_atlasid_dev_key}
+      display-name: "AtlasID"
+      rate-limit: 100
+    indianexpress:
+      api-key: ${INDIANEXPRESS_API_KEY:ems_indianexpress_dev_key}
+      display-name: "Indian Express"
+      rate-limit: 200
+    shopping:
+      api-key: ${SHOPPING_API_KEY:ems_shopping_dev_key}
+      display-name: "ShopVerse"
+      rate-limit: 150
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    check-template-location: true
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
